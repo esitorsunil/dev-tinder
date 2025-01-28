@@ -2,8 +2,16 @@ const express = require("express")
 
 const app = express()
 
-app.use("/test", (req, res) => {
-    res.send("Hello from the server")
+app.get("/user", (req, res) => {
+    res.send({firstName: "Sunil", lastName: "Ferno"})
+})
+
+app.post("/user", (req, res) => {
+    res.send("User connected to the DB")
+})
+
+app.delete("/user", (req, res) => {
+    res.send("Deleted successfully")
 })
 
 app.use("/", (req, res) => {
