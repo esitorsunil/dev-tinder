@@ -2,27 +2,23 @@ const express = require("express")
 
 const app = express()
 
-const {adminAuth, userAuth} = require("./middlewares/Auth")
-
-app.use("/admin", adminAuth)
-
-app.post("/user/login", (req, res) => {
-    res.send("user login successfully")
+app.use("/", (err,req,res,next) => {
+    if(err) {
+        res.status(500).send("Something went wrong")
+    }
 })
 
-app.get("/user/data",userAuth, (req, res) => {
-    res.send("get user data")
-});
+app.get("/getUserData", (req, res) => {
+    throw new Error("sbdshfgre")
+    res.send("Hello");
+})
 
-
-
-app.get("/admin/getALlData", (req, res) => {
-    res.send("Get all data")
-});
-
-app.get("/admin/deleteData", (req, res) => {
-    res.send("Delete all data")
-});
+app.use("/", (err, req, res, next) => {
+    if(err) {
+        //log your error
+        res.status(500).send("Something went wrong")
+    }
+})
 
 app.listen(3000, () => {
     console.log("The port is running successfully")
