@@ -9,8 +9,16 @@ app.use("/", (err,req,res,next) => {
 })
 
 app.get("/getUserData", (req, res) => {
+    //try{
+    //Logic of DB call
+
     throw new Error("sbdshfgre")
     res.send("Hello");
+
+    //catch(err) {
+    //log your error
+    //res.status(500).send("Something went wrong")
+    //}
 })
 
 app.use("/", (err, req, res, next) => {
