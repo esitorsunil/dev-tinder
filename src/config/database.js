@@ -2,13 +2,8 @@ const mongoose = require("mongoose")
 
 const connectDB = async () => {
     await mongoose.connect(
-        "mongodb+srv://maesitorsunil:hHCxW3Bj02xxj0H9@namastenode.h0eeh.mongodb.net/"
+        "mongodb+srv://maesitorsunil:hHCxW3Bj02xxj0H9@namastenode.h0eeh.mongodb.net/devTinder"
     )
 }
 
-connectDB().then(() => {
-    console.log("Database has been established")
-})
-.catch((err) => {
-    console.log("Database cannot be established")
-})
+module.exports = connectDB;
