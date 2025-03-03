@@ -13,6 +13,27 @@ app.post("/signup", async (req, res) => {
     res.send("User has been saved");
 });
 
+//Get one user
+app.get("/user", async(req, res) => {
+    const userEmail = req.body.emailId;
+
+    try{
+        const user = await User.findOne({emailId: userEmail});
+        res.send(user);
+    } catch(err) {
+        res.status(400).send("Something went wrong");
+    }
+})
+
+app.get("/feed", async(req, res) => {
+    try{
+        const user = await User.find({});
+        res.send(user);
+    }catch(err) {
+        res.status(400).send("Something went wrong");
+    }
+})
+
 connectDB().then(() => {
     console.log("Database has been established");
     app.listen(3000, () => {
