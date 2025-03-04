@@ -5,6 +5,7 @@ const User = require("./models/user");
 
 app.use(express.json());
 
+//post api
 app.post("/signup", async (req, res) => {
     //Create new instance of user
     const user = new User(req.body)
@@ -24,12 +25,25 @@ app.get("/user", async(req, res) => {
         res.status(400).send("Something went wrong");
     }
 })
-
+//Get all users
 app.get("/feed", async(req, res) => {
     try{
         const user = await User.find({});
         res.send(user);
     }catch(err) {
+        res.status(400).send("Something went wrong");
+    }
+})
+
+//delete api
+app.delete("/user", async(req, res) => {
+    const userId = req.body.userId;
+
+    try {
+        const user = User.findByIdAndDelete(userId);
+
+        res.send("User deleted succesfully");
+    } catch (error) {
         res.status(400).send("Something went wrong");
     }
 })
