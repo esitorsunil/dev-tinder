@@ -5,12 +5,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 4,
-        maxLength: 50
+        maxLength: 20
     },
     lastName: {
         type: String,
         minLength: 4,
-        maxLength: 50
+        maxLength: 20
     },
     emailId: {
         type: String,
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 8,
-        maxLength: 50
+        maxLength: 20
     },
     age: {
         type: Number,
@@ -43,7 +43,9 @@ const userSchema = new mongoose.Schema({
     },
     about: {
         type: String,
-        default: "This is a default about of the user"
+        default: "This is a default about of the user",
+        minLength: 10,
+        maxLength: 200
     },
     skills: {
         type: [String]
