@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
                 throw new Error("Invalid email address"+ value)
         }
     },
+},
     password: {
         type: String,
         required: true,
@@ -63,7 +64,6 @@ const userSchema = new mongoose.Schema({
     skills: {
         type: [String]
     },
-},
 },
 {
     timestamps: true
