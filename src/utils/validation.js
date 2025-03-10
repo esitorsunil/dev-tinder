@@ -21,6 +21,8 @@ const validateEditProfileData = (req) => {
     return isEditAllowed;
 }
 
+
+
 module.exports = {
     validateSignupData,
     validateEditProfileData
