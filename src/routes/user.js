@@ -4,7 +4,7 @@ const ConnectionRequest = require("../models/connectionRequest");
 const {userAuth} = require("../middlewares/Auth");
 const User = require("../models/user");
 
-const USER_SAFE_DATA = "firstName lastName photoUrl age gender about skills"
+const USER_SAFE_DATA = "firstName lastName photoUrl age gender about skills";
 
 userRouter.get("/user/request/received", userAuth, async(req, res) => {
     try {
@@ -33,11 +33,15 @@ userRouter.get("/user/connection", userAuth, async(req, res) => {
 
         const connectionRequests = await ConnectionRequest.find({
             $or: [
-                {fromUserId: loggedInUser._id, status: "accepted"},
+               
                 {toUserId: loggedInUser._id, status: "accepted"},
+                {fromUserId: loggedInUser._id, status: "accepted"},
             ],
-        }).populate( "fromUserId", USER_SAFE_DATA )
-          .populate( "toUserId", USER_SAFE_DATA )
+        })
+        .populate( "fromUserId", USER_SAFE_DATA )
+        .populate( "toUserId", USER_SAFE_DATA );
+
+      
 
         const data = connectionRequests.map((row) => {
             if(row.fromUserId._id.toString() === loggedInUser._id.toString()) {
@@ -62,7 +66,6 @@ userRouter.get("/feed", userAuth, async(req, res) => {
         limit = limit > 50 ? 50 : limit;
 
         const skip = (page - 1) * limit;
-
 
         const connectionRequests = await ConnectionRequest.find({
             $or: [{fromUserId: loggedInUser._id}, {toUserId: loggedInUser._id},],
