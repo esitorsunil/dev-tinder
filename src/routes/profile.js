@@ -28,10 +28,10 @@ profileRouter.patch("/profile/edit", userAuth, async(req, res) => {
 
         res.json({
             message: `${loggedInUser.firstName}, "your profile has been updated successfully"`,
-            user: loggedInUser
+            user: loggedInUser,
         });
     } catch (err) {
-        res.status(400).send("ERROR :" + err.message);
+        res.status(400).send( err.message);
     }
 })
 
