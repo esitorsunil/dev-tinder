@@ -4,6 +4,8 @@ const app = express()
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 
+const PORT = process.env.PORT || 3000;
+
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
@@ -24,7 +26,7 @@ app.use("/", userRouter)
 
 connectDB().then(() => {
     console.log("Database has been established");
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
         console.log("The port is running successfully");
     });
 })
