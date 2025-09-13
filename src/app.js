@@ -7,13 +7,26 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({
-    origin: [
-        "http://localhost:5173", 
-        "https://devtinder-frontend-cjza.onrender.com"
-    ],
+// --- CORS ---
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://devtinder-frontend-cjza.onrender.com"
+  ];
+  
+  app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-}));
+  }));
+  
+  // Handle preflight requests
+  app.options("*", cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  }));
 app.use(express.json());
 app.use(cookieParser());
 
