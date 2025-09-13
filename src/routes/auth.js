@@ -29,8 +29,12 @@ authRouter.post("/signup", async (req, res) => {
 
                 //Add the token to the cookie and send response to the user
                 res.cookie("token", token, {
+                    httpOnly: true,        // cannot be accessed via JS (more secure)
+                    secure: true,          // required for HTTPS (Render is always HTTPS)
+                    sameSite: "none",      // allows cross-site cookies
                     expires: new Date(Date.now() + 8 * 3600000)
-                });
+                  });
+                  
                 
     res.json({message: "User has been saved", data: savedUser});
     } catch (err) {
@@ -56,8 +60,12 @@ authRouter.post("/login", async (req, res)=> {
 
                 //Add the token to the cookie and send response to the user
                 res.cookie("token", token, {
+                    httpOnly: true,        // cannot be accessed via JS (more secure)
+                    secure: true,          // required for HTTPS (Render is always HTTPS)
+                    sameSite: "none",      // allows cross-site cookies
                     expires: new Date(Date.now() + 8 * 3600000)
-                });
+                  });
+                  
                 res.send(user);
             } else {
                 throw new Error("Invalid email or password");
