@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 // --- CORS ---
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://devTinder-sunil.netlify.app/"
+    "https://devTinder-sunil.netlify.app"
   ];
   
   app.use(cors({
