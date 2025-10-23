@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
     "bcrpyt": "^2.0.0",
@@ -23,6 +23,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.11.0",
+    "razorpay": "^2.9.6",
     "validator": "^13.12.0"
   }
 }
