@@ -47,3 +47,8 @@
 ### **8. Express Router Structure**
 ✅ Modular route organization for maintainability  
 ✅ APIs structured into separate routers (`auth`, `profile`, `connections`, `users`)  
+
+### **8. Razorpay**
+- Created payment api
+- order id is created and send to razorpay and save payment details
+- make api dynamic for membership type
