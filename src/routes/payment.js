@@ -7,7 +7,7 @@ const { membershipAmount } = require("../utils/constants");
 
 paymentRouter.post("/payment/create", userAuth, async(req, res) => {
     try {
-      const {firstName, lastName, emailId} = req.body
+      const {firstName, lastName, emailId} = req.user
       const {membershipType} = req.body 
         const orders = await razorpayInstance.orders.create({
             "amount": membershipAmount[membershipType] * 100,
@@ -33,7 +33,7 @@ paymentRouter.post("/payment/create", userAuth, async(req, res) => {
 
           const savedPayment = await payment.save();
           //return back my order to frontend
-          res.json({ ...savedPayment.toJSON(), keyid: process.env.RAZORPAY_KEY_ID})
+          res.json({ ...savedPayment.toJSON(), keyId: process.env.RAZORPAY_KEY_ID})
 
     } catch (error) {
         res.status(500).json({ message: error.message });
