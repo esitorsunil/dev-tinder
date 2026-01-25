@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcrpyt": "^2.0.0",
