@@ -52,3 +52,5 @@
 - Created payment api
 - order id is created and send to razorpay and save payment details
 - make api dynamic for membership type
+- webhook api - signature is valid, status captures, membership type will be true
+- verify payment api 

@@ -9,10 +9,10 @@
   "license": "ISC",
   "author": "Sunil",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
     "bcrpyt": "^2.0.0",
@@ -24,6 +24,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.11.0",
     "razorpay": "^2.9.6",
+    "socket.io": "^4.8.3",
     "validator": "^13.12.0"
   }
 }
