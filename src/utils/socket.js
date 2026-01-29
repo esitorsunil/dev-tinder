@@ -11,8 +11,9 @@ const getSecretRoomId = (userId, targetUserId) => {
 
 const initializeSocket = (server) => {
    const io = socket(server, {
+    path: "/api/socket.io",
     cors : {
-        origin : "http://localhost:5173",
+        origin : ["http://localhost:5173", "https://sunil-devtinder.netlify.app/"],
     },
    });
 
